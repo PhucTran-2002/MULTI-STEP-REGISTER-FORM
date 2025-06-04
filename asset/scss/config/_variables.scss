@@ -1,5 +1,16 @@
+:root {
+    --color-primary: #007bff;
+    --color-secondary: #6c757d;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-text: #343a40;
+    --color-background: #f8f9fa;
+    --color-border: #dee2e6;
 
-    $primary-color: #8b5cf6;
-    $bg-color: #111827;
-    $card-color: #1f2937;
-    $text-color: #fff;
+    --font-family-base: Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-heading: 2rem;
+
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 1.5rem; }

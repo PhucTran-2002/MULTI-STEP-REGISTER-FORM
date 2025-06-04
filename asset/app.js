@@ -1,75 +1,109 @@
-const steps = document.querySelectorAll('.form__step');
-const dots = document.querySelectorAll('.form__dot');
+document.addEventListener('DOMContentLoaded', function () {
+  const formStep1 = document.querySelector('.form-step1');
+  const formStep2 = document.querySelector('.form-step2');
+  const formStep3 = document.querySelector('.form-step3');
+  const checkboxes = document.querySelectorAll('input[name="topic"]');
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
 
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const topics = document.querySelectorAll('.form__topic');
+  const nameDisplay = document.querySelector('[data-cy="summary-name"]');
+  const emailDisplay = document.querySelector('[data-cy="summary-email"]');
+  const topicsList = document.querySelector('[data-cy="summary-topics"]');
 
-const btnStep1 = document.getElementById('btn-step-1');
-const btnStep2 = document.getElementById('btn-step-2');
-const btnConfirm = document.getElementById('btn-confirm');
+  const stepperValue = document.querySelector('[data-cy="stepper-value"]');
+  const stepperCircles = document.querySelectorAll('.stepper__circle');
 
-let selectedTopics = [];
+  function updateStepper(stepNumber) {
+    stepperValue.textContent = stepNumber;
 
-// Step 1 validation
-btnStep1.addEventListener('click', (e) => {
-  e.preventDefault();
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
+    stepperCircles.forEach((circle, index) => {
+      if (index < stepNumber) {
+        circle.classList.add('stepper__circle--active');
+      } else {
+        circle.classList.remove('stepper__circle--active');
+      }
 
-
-  localStorage.setItem('name', name);
-  localStorage.setItem('email', email);
-
-  showStep(1);
-});
-
-// Topic selection
-topics.forEach(topic => {
-  topic.addEventListener('click', () => {
-    topic.classList.toggle('form__topic--selected');
-  });
-});
-
-// Step 2 validation
-btnStep2.addEventListener('click', (e) => {
-  e.preventDefault();
-  selectedTopics = Array.from(document.querySelectorAll('.form__topic--selected')).map(t => t.innerText);
-
-  if (selectedTopics.length === 0) {
-    alert('Please select at least one topic.');
-    return;
+      if (index === stepNumber - 1) {
+        circle.classList.add('stepper__circle--current');
+      } else {
+        circle.classList.remove('stepper__circle--current');
+      }
+    });
   }
 
-  localStorage.setItem('topics', JSON.stringify(selectedTopics));
-  showStep(2);
+  function loadSummaryData() {
+    const name = localStorage.getItem('username');
+    const email = localStorage.getItem('email');
+    const topics = JSON.parse(localStorage.getItem('topics') || '[]');
 
-});
+    nameDisplay.innerText = name || '(No name)';
+    emailDisplay.innerText = email || '(No email)';
 
-// Confirm
-btnConfirm.addEventListener('click', (e) => {
-  e.preventDefault();
-  alert('✅ Success');
-});
+    topicsList.innerHTML = '';
+    topics.forEach(topic => {
+      const li = document.createElement('li');
+      li.textContent = topic;
+      topicsList.appendChild(li);
+    });
+  }
 
-// Step display logic
-function showStep(stepIndex) {
-  steps.forEach((step, i) => {
-    step.classList.toggle('form__step--active', i === stepIndex);
-    dots[i].classList.toggle('form__dot--active', i === stepIndex);
+  formStep1.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    localStorage.setItem('username', username);
+    localStorage.setItem('email', email);
+
+    formStep1.classList.add('form--hidden');
+    formStep2.classList.remove('form--hidden');
+    updateStepper(2);
   });
-}
 
-// Populate summary
-function populateSummary() {
-  document.getElementById('summary-name').innerText = localStorage.getItem('name');
-  document.getElementById('summary-email').innerText = localStorage.getItem('email');
-
-  const topicsList = document.getElementById('summary-topics');
-  topicsList.innerHTML = '';
-  JSON.parse(localStorage.getItem('topics')).forEach(topic => {
-    const li = document.createElement('li');
-    li.innerText = topic;
-    topicsList.appendChild(li);
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+      const label = this.closest('.form-step2__label');
+      if (this.checked) {
+        label.classList.add('form-step2__label--checked');
+      } else {
+        label.classList.remove('form-step2__label--checked');
+      }
+    });
   });
-}
+
+  formStep2.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const selectedTopics = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    if (selectedTopics.length === 0) {
+      alert('Please select at least one topic');
+      return;
+    }
+
+    localStorage.setItem('topics', JSON.stringify(selectedTopics));
+
+    formStep2.classList.add('form--hidden');
+    formStep3.classList.remove('form--hidden');
+    updateStepper(3);
+    loadSummaryData();
+  });
+
+  formStep3.addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('✅ Success');
+
+    formStep3.classList.add('form--hidden');
+    formStep1.classList.remove('form--hidden');
+    updateStepper(1);
+
+    usernameInput.value = localStorage.getItem('username') || '';
+    emailInput.value = localStorage.getItem('email') || '';
+  });
+
+  updateStepper(1);
+});

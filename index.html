@@ -2,64 +2,111 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MULTI-STEP REGISTER FORM</title>
-    <link rel="stylesheet" href="./asset/css/style.css" />
+    <meta
+      name="description"
+      content="This is a multi-step registration form component page. It allows users to register by filling out their information in a step-by-step process."
+    />
+    <title>Multi-step Register Form</title>
+    <link rel="stylesheet" href="/asset/css/style.css" />
   </head>
   <body>
-    <form class="form">
-      <div class="form__step form__step--active" data-step="1">
-        <h2 class="form__title">Register</h2>
-        <label class="form__label" for="name">Name</label>
+    <!-- Chỉ hiển thị phần chính, các phần còn lại giữ nguyên cấu trúc -->
+
+    <form class="form-step1" data-cy="form-step1">
+      <h2 class="form-step1__heading">Register</h2>
+
+      <label class="form-step1__label"
+        >Name
         <input
-          class="form__input"
-          id="name"
           type="text"
+          id="username"
+          class="form-step1__input"
           placeholder="John Doe"
           required
         />
+      </label>
 
-        <label class="form__label" for="email">Email</label>
+      <label class="form-step1__label"
+        >Email
         <input
-          class="form__input"
-          id="email"
           type="email"
+          id="email"
+          class="form-step1__input"
           placeholder="example@gmail.com"
           required
         />
+      </label>
 
-        <button class="form__button" id="btn-step-1">Continue</button>
-      </div>
-
-      <div class="form__step" data-step="2">
-        <h2 class="form__title">Which topics you are interested in?</h2>
-        <div class="form__topics">
-          <button class="form__topic">Software Development</button>
-          <button class="form__topic">User Experience</button>
-          <button class="form__topic">Graphic Design</button>
-        </div>
-        <button class="form__button" id="btn-step-2">Continue</button>
-      </div>
-
-      <div class="form__step" data-step="3">
-        <h2 class="form__title">Summary</h2>
-        <p class="form__summary">
-          <strong>Name:</strong> <span id="summary-name"></span>
-        </p>
-        <p class="form__summary">
-          <strong>Email:</strong> <span id="summary-email"></span>
-        </p>
-        <p class="form__summary"><strong>Topics:</strong></p>
-        <ul class="form__summary-list" id="summary-topics"></ul>
-        <button class="form__button" id="btn-confirm">Confirm</button>
-      </div>
-
-      <div class="form__steps-indicator">
-        <span class="form__dot form__dot--active"></span>
-        <span class="form__dot"></span>
-        <span class="form__dot"></span>
-      </div>
+      <button class="form-step1__button" type="submit">Continue</button>
     </form>
+
+    <form class="form-step2 form--hidden" data-cy="form-step2">
+      <h2 class="form-step2__heading">Which topics are you interested in?</h2>
+
+      <label class="form-step2__label">
+        <input
+          type="checkbox"
+          name="topic"
+          value="Software Development"
+          class="form-step2__input"
+        />
+        Software Development
+      </label>
+
+      <label class="form-step2__label">
+        <input
+          type="checkbox"
+          name="topic"
+          value="User Experience"
+          class="form-step2__input"
+        />
+        User Experience
+      </label>
+
+      <label class="form-step2__label">
+        <input
+          type="checkbox"
+          name="topic"
+          value="Graphic Design"
+          class="form-step2__input"
+        />
+        Graphic Design
+      </label>
+
+      <button class="form-step2__button" type="submit">Continue</button>
+    </form>
+
+    <form class="form-step3 form--hidden" data-cy="form-step3">
+      <h2 class="form-step3__heading">Summary</h2>
+      <p class="form-step3__data">
+        <span class="form-step3__label">Name:</span>
+        <span class="form-step3__value" data-cy="summary-name"></span>
+      </p>
+      <p class="form-step3__data">
+        <span class="form-step3__label">Email:</span>
+        <span class="form-step3__value" data-cy="summary-email"></span>
+      </p>
+      <p class="form-step3__label">Topics:</p>
+      <ul class="form-step3__list" data-cy="summary-topics"></ul>
+
+      <button class="form-step3__button" type="submit">Confirm</button>
+    </form>
+
+    <div class="stepper">
+      <p class="stepper__text">
+        Step <span class="stepper__value" data-cy="stepper-value"></span> of 3
+      </p>
+      <div class="stepper__circles">
+        <div
+          class="stepper__circle stepper__circle--active stepper__circle--current"
+        ></div>
+        <div class="stepper__circle"></div>
+        <div class="stepper__circle"></div>
+      </div>
+    </div>
+
     <script src="asset/app.js"></script>
   </body>
 </html>

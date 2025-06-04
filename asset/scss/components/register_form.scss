@@ -1,90 +1,193 @@
-$primary-color: #8b5cf6;
-$bg-color: #111827;
-$card-color: #1f2937;
-$text-color: #fff;
+:root {
+    --dark: #212936;
+    --pale-gray: #e5e7eb;
+    --cool-gray: #a1a1a9;
+    --slate-gray: #4d5562;
+    --purpley: #845eee;
+    --blue-purple: #652cd1;
+    --midnight-blue: #261e51;
+    --twilight: #342d61;
+    --lunar-gray: #394050;
+    --almost-dark: #121826;
+}
 
-.form {
-    background: $card-color;
-    padding: 2rem;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 500px;
-    align-items: center;
+@mixin button-style {
+    background: linear-gradient(to bottom, var(--purpley), var(--blue-purple));
+    color: var(--pale-gray);
+    padding: 0.75rem 2.2rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 
-    &__step {
-        display: none;
-
-        &--active {
-            display: block;
-        }
+    &:hover {
+        transform: scale(1.08);
     }
+}
 
-    &__title {
-        font-size: 1.5rem;
-        font-weight: bold;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+}
+
+body {
+    background-color: var(--almost-dark);
+}
+.form-step2{
+    background: var(--dark);
+        color: var(--pale-gray);
+        padding: 2.5rem;
+        width: 85%;
+        max-width: 28.5rem;
+        margin: 0 auto;
+        border: 0.01rem solid var(--slate-gray);
+        border-radius: 1rem;
+    
+        &__heading {
+            font-size: 1.25rem;
+                margin-bottom: 2.4rem;
+            
+        }
+    
+        &__label {
+            display: block;
+            padding: 0.9rem 0.8rem;
+            margin-top: 1rem;
+            background: var(--lunar-gray);
+            border-radius: 0.7rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--cool-gray);
+            border: 0.01rem solid var(--slate-gray);
+    
+            &--checker {
+                background: var(--purpley);
+                color: var(--pale-gray);
+            }
+        }
+    
+        &__input {
+            appearance: none;
+        }
+    
+        &__button {
+            @include button-style;
+            display: block;
+            margin: 2.3rem auto 0;
+           
+        }
+    
+        &--hidden {
+            display: none;
+        } }
+
+
+.form-step1,
+.form-step3 {
+    background: var(--dark);
+    color: var(--pale-gray);
+    padding: 2.5rem;
+    width: 85%;
+    max-width: 28.5rem;
+    margin: 0 auto;
+    border: 0.01rem solid var(--slate-gray);
+    border-radius: 1rem;
+
+    &__heading {
+        font-size: 1.25rem;
+        margin-bottom: 2.4rem;
     }
 
     &__label {
-        margin-top: 1rem;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        color: var(--cool-gray);
+        margin-top: 1.5rem;
     }
 
     &__input {
-        width: 100%;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-        background: darken($card-color, 5%);
-        color: $text-color;
+        padding: 0.9rem;
+        font-size: 0.75rem;
+        border: 0.13rem solid var(--slate-gray);
+        background: transparent;
+        border-radius: 0.7rem;
+        color: var(--pale-gray);
+
+        &:focus {
+            border-color: var(--purpley);
+            outline: none;
+        }
     }
 
     &__button {
-        background: linear-gradient(to right, #a855f7, #6366f1);
-        color: #fff;
-        padding: 0.75rem 2rem;
-        border: none;
-        border-radius: 999px;
-        cursor: pointer;
-        margin-top: 1rem;
+        @include button-style;
+        display: block;
+        margin: 2.3rem auto 0;
     }
 
-    &__topic {
-        background: darken($card-color, 5%);
-        color: $text-color;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 0.5rem;
-        width: 100%;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
+    &__data {
+        margin-top: 0.3rem;
+    }
 
-        &--selected {
-            background: $primary-color;
+    &__list {
+        list-style: disc inside;
+    }
+
+    &__label--checked {
+        background: var(--purpley);
+        color: var(--pale-gray);
+    }
+}
+
+.form--hidden {
+    display: none;
+}
+
+.stepper {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--pale-gray);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &__text {
+        font-size: 0.7rem;
+        color: var(--cool-gray);
+        position: absolute;
+        left: 0;
+        transform: translate(-100%);
+        padding-right: 1.8rem;
+    }
+
+    &__circles {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &__circle {
+        width: 0.7rem;
+        height: 0.7rem;
+        background: var(--slate-gray);
+        border-radius: 50%;
+        transition: background-color 0.4s linear, box-shadow 0.4s ease-in-out;
+
+        &--active {
+            background: var(--blue-purple);
+        }
+
+        &--current {
+            box-shadow: 0 0 0 0.4rem var(--twilight);
         }
     }
-
-    &__steps-indicator {
-        margin-top: 1rem;
-
-        .form__dot {
-            height: 10px;
-            width: 10px;
-            background: gray;
-            border-radius: 50%;
-            margin: 0 0.25rem;
-
-            &--active {
-                background: $primary-color;
-            }
-        }
-    }
-
-    &__summary {
-        margin-bottom: 0.5rem;
-    }
-
-    &__summary-list {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-    } }
+}

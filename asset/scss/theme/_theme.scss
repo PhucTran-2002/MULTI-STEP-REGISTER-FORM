@@ -1,0 +1,9 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    background: radial-gradient(circle at 0rem 0rem, var(--midnight-blue), transparent 30%),
+        radial-gradient(circle at 100% 100%, var(--midnight-blue), transparent 30%);
+}
