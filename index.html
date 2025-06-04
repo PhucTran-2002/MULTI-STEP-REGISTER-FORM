@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MULTI-STEP REGISTER FORM</title>
+    <link rel="stylesheet" href="./asset/css/style.css" />
+  </head>
+  <body>
+    <form class="form">
+      <div class="form__step form__step--active" data-step="1">
+        <h2 class="form__title">Register</h2>
+        <label class="form__label" for="name">Name</label>
+        <input
+          class="form__input"
+          id="name"
+          type="text"
+          placeholder="John Doe"
+          required
+        />
+
+        <label class="form__label" for="email">Email</label>
+        <input
+          class="form__input"
+          id="email"
+          type="email"
+          placeholder="example@gmail.com"
+          required
+        />
+
+        <button class="form__button" id="btn-step-1">Continue</button>
+      </div>
+
+      <div class="form__step" data-step="2">
+        <h2 class="form__title">Which topics you are interested in?</h2>
+        <div class="form__topics">
+          <button class="form__topic">Software Development</button>
+          <button class="form__topic">User Experience</button>
+          <button class="form__topic">Graphic Design</button>
+        </div>
+        <button class="form__button" id="btn-step-2">Continue</button>
+      </div>
+
+      <div class="form__step" data-step="3">
+        <h2 class="form__title">Summary</h2>
+        <p class="form__summary">
+          <strong>Name:</strong> <span id="summary-name"></span>
+        </p>
+        <p class="form__summary">
+          <strong>Email:</strong> <span id="summary-email"></span>
+        </p>
+        <p class="form__summary"><strong>Topics:</strong></p>
+        <ul class="form__summary-list" id="summary-topics"></ul>
+        <button class="form__button" id="btn-confirm">Confirm</button>
+      </div>
+
+      <div class="form__steps-indicator">
+        <span class="form__dot form__dot--active"></span>
+        <span class="form__dot"></span>
+        <span class="form__dot"></span>
+      </div>
+    </form>
+    <script src="asset/app.js"></script>
+  </body>
+</html>

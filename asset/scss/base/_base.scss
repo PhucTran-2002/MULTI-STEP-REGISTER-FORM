@@ -1,0 +1,15 @@
+$primary-color: #8b5cf6;
+$bg-color: #111827;
+$card-color: #1f2937;
+$text-color: #fff;
+
+* {
+    margin: 0;
+    padding: 0
+}
+body {
+    background: $bg-color;
+    color: $text-color;
+    font-family: 'Inter', sans-serif;
+ 
+    height: 100vh; }
