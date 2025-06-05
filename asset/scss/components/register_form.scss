@@ -53,8 +53,8 @@
             color: var(--cool-gray);
             border: 0.01rem solid var(--slate-gray);
     
-            &--checker {
-                background: var(--purpley);
+            &--checked {
+                background-color: var(--purpley);
                 color: var(--pale-gray);
             }
         }
@@ -72,14 +72,13 @@
     
         &--hidden {
             display: none;
-        } }
-.form-step2{
-   &__input:focus {
-                    outline: none;
-                    background-color:var(--blue-purple)
+        }
+                
+     }
 
-   }
-                }
+
+            
+
 
 
 .form-step1,

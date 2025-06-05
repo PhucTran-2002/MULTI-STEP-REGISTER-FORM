@@ -82,13 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Event listeners for each topic checkbox to add/remove a class when checked/unchecked
   checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('focus', function () {
+    checkbox.addEventListener('change', function () {
     
       const label = this.closest('.form-step2__label'); 
       if (this.checked) {
-        label.classList.add('form-step2__label--checked');  
+        label.style.backgroundColor = '#652cd1';   
       } else {
-        label.classList.remove('form-step2__label--checked'); 
+        label.style.backgroundColor = '';  
       }
     });
   });
@@ -120,10 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
   
   formStep3.addEventListener('submit', function (e) {
     e.preventDefault();
-    alert('✅ Success'); // Show a success message
-
-    formStep3.classList.add('form--hidden');   
-    formStep1.classList.remove('form--hidden'); 
+    alert('✅ Success');
+    window.location.reload(); // Show a success message
     updateStepper(1);                           
 
   

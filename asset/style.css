@@ -89,9 +89,7 @@ body {
 .form-step2--hidden {
   display: none;
 }
-
-.form-step2__input:focus {
-  outline: none;
+.form-step2__label--checked {
   background-color: var(--blue-purple);
 }
 
