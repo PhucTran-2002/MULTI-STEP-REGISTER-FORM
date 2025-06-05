@@ -86,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
     
       const label = this.closest('.form-step2__label'); 
       if (this.checked) {
-        label.style.backgroundColor = '#652cd1';   
+        label.style.backgroundColor = '#652cd1';
+        label.style.fontWeight = '400'; 
+        label.style.color = 'white';  
       } else {
         label.style.backgroundColor = '';  
       }
@@ -121,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
   formStep3.addEventListener('submit', function (e) {
     e.preventDefault();
     alert('✅ Success');
-    window.location.reload(); // Show a success message
+    window.location.reload(); 
+    localStorage.clear();// Show a success message
     updateStepper(1);                           
 
   
