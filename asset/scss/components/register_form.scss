@@ -73,6 +73,13 @@
         &--hidden {
             display: none;
         } }
+.form-step2{
+   &__input:focus {
+                    outline: none;
+                    background-color:var(--blue-purple)
+
+   }
+                }
 
 
 .form-step1,

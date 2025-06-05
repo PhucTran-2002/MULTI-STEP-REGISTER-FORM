@@ -90,6 +90,11 @@ body {
   display: none;
 }
 
+.form-step2__input:focus {
+  outline: none;
+  background-color: var(--blue-purple);
+}
+
 .form-step1,
 .form-step3 {
   background: var(--dark);

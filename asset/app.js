@@ -82,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Event listeners for each topic checkbox to add/remove a class when checked/unchecked
   checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function () {
+    checkbox.addEventListener('focus', function () {
+    
       const label = this.closest('.form-step2__label'); 
       if (this.checked) {
         label.classList.add('form-step2__label--checked');  
