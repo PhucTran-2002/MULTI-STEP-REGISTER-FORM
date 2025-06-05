@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/asset/images/icon_logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -12,98 +12,98 @@
     <link rel="stylesheet" href="/asset/css/style.css" />
   </head>
   <body>
-    <!-- Chỉ hiển thị phần chính, các phần còn lại giữ nguyên cấu trúc -->
+    <div id="app">
+      <form class="form-step1" data-cy="form-step1">
+        <h2 class="form-step1__heading">Register</h2>
 
-    <form class="form-step1" data-cy="form-step1">
-      <h2 class="form-step1__heading">Register</h2>
+        <label class="form-step1__label"
+          >Name
+          <input
+            type="text"
+            id="username"
+            class="form-step1__input"
+            placeholder="John Doe"
+            required
+          />
+        </label>
 
-      <label class="form-step1__label"
-        >Name
-        <input
-          type="text"
-          id="username"
-          class="form-step1__input"
-          placeholder="John Doe"
-          required
-        />
-      </label>
+        <label class="form-step1__label"
+          >Email
+          <input
+            type="email"
+            id="email"
+            class="form-step1__input"
+            placeholder="example@gmail.com"
+            required
+          />
+        </label>
 
-      <label class="form-step1__label"
-        >Email
-        <input
-          type="email"
-          id="email"
-          class="form-step1__input"
-          placeholder="example@gmail.com"
-          required
-        />
-      </label>
+        <button class="form-step1__button" type="submit">Continue</button>
+      </form>
 
-      <button class="form-step1__button" type="submit">Continue</button>
-    </form>
+      <form class="form-step2 form--hidden" data-cy="form-step2">
+        <h2 class="form-step2__heading">Which topics are you interested in?</h2>
 
-    <form class="form-step2 form--hidden" data-cy="form-step2">
-      <h2 class="form-step2__heading">Which topics are you interested in?</h2>
+        <label class="form-step2__label">
+          <input
+            type="checkbox"
+            name="topic"
+            value="Software Development"
+            class="form-step2__input"
+          />
+          Software Development
+        </label>
 
-      <label class="form-step2__label">
-        <input
-          type="checkbox"
-          name="topic"
-          value="Software Development"
-          class="form-step2__input"
-        />
-        Software Development
-      </label>
+        <label class="form-step2__label">
+          <input
+            type="checkbox"
+            name="topic"
+            value="User Experience"
+            class="form-step2__input"
+          />
+          User Experience
+        </label>
 
-      <label class="form-step2__label">
-        <input
-          type="checkbox"
-          name="topic"
-          value="User Experience"
-          class="form-step2__input"
-        />
-        User Experience
-      </label>
+        <label class="form-step2__label">
+          <input
+            type="checkbox"
+            name="topic"
+            value="Graphic Design"
+            class="form-step2__input"
+          />
+          Graphic Design
+        </label>
 
-      <label class="form-step2__label">
-        <input
-          type="checkbox"
-          name="topic"
-          value="Graphic Design"
-          class="form-step2__input"
-        />
-        Graphic Design
-      </label>
+        <button class="form-step2__button" type="submit">Continue</button>
+      </form>
 
-      <button class="form-step2__button" type="submit">Continue</button>
-    </form>
+      <form class="form-step3 form--hidden" data-cy="form-step3">
+        <h2 class="form-step3__heading">Summary</h2>
+        <p class="form-step3__data">
+          <span class="form-step3__label">Name:</span>
+          <span class="form-step3__value" data-cy="summary-name"></span>
+        </p>
+        <p class="form-step3__data">
+          <span class="form-step3__label">Email:</span>
+          <span class="form-step3__value" data-cy="summary-email"></span>
+        </p>
+        <p class="form-step3__label">Topics:</p>
+        <ul class="form-step3__list" data-cy="summary-topics"></ul>
 
-    <form class="form-step3 form--hidden" data-cy="form-step3">
-      <h2 class="form-step3__heading">Summary</h2>
-      <p class="form-step3__data">
-        <span class="form-step3__label">Name:</span>
-        <span class="form-step3__value" data-cy="summary-name"></span>
-      </p>
-      <p class="form-step3__data">
-        <span class="form-step3__label">Email:</span>
-        <span class="form-step3__value" data-cy="summary-email"></span>
-      </p>
-      <p class="form-step3__label">Topics:</p>
-      <ul class="form-step3__list" data-cy="summary-topics"></ul>
+        <button class="form-step3__button" type="submit">Confirm</button>
+      </form>
 
-      <button class="form-step3__button" type="submit">Confirm</button>
-    </form>
-
-    <div class="stepper">
-      <p class="stepper__text">
-        Step <span class="stepper__value" data-cy="stepper-value"></span> of 3
-      </p>
-      <div class="stepper__circles">
-        <div
-          class="stepper__circle stepper__circle--active stepper__circle--current"
-        ></div>
-        <div class="stepper__circle"></div>
-        <div class="stepper__circle"></div>
+      <div class="stepper">
+        <p class="stepper__text">
+          Step <span class="stepper__value" data-cy="stepper-value"></span> of 3
+        </p>
+        <div class="stepper__circles">
+          <div
+            class="stepper__circle stepper__circle--active stepper__circle--current"
+          ></div>
+          <div class="stepper__circle"></div>
+          <div class="stepper__circle"></div>
+        </div>
       </div>
     </div>
 

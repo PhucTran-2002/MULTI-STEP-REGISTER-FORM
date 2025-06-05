@@ -52,7 +52,7 @@ body {
     
         &__heading {
             font-size: 1.25rem;
-                margin-bottom: 2.4rem;
+            margin-bottom: 2.4rem;
             
         }
     
@@ -166,13 +166,15 @@ body {
         position: absolute;
         left: 0;
         transform: translate(-100%);
-        padding-right: 1.8rem;
+       // padding-right: 1.8rem;
+        text-align: center;
     }
 
     &__circles {
         display: flex;
         gap: 1rem;
         align-items: center;
+        padding-left: 20px;
     }
 
     &__circle {
