@@ -67,7 +67,24 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault(); 
 
     const username = usernameInput.value.trim(); // Get trimmed username value
+    if (username === '') {
+      alert('Please enter a username.');
+      return; 
+    }
     const email = emailInput.value.trim();       // Get trimmed email value
+    if (email === '') {
+      alert('Please enter a email.');
+      return; 
+    }
+  
+    const nameRegex = /^[a-zA-Z0-9\s\u00C0-\u1EF9]+$/;
+    if (!nameRegex.test(username)) {
+      alert('Please use only letters, numbers, and spaces for your username. Special characters are forbidden.');
+        return; 
+    }
+
+    // Email validation: check if it's empty after trimming
+
    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
@@ -123,13 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
   formStep3.addEventListener('submit', function (e) {
     e.preventDefault();
     alert('✅ Success');
-    window.location.reload(); 
     localStorage.clear();// Show a success message
+    window.location.reload(); 
     updateStepper(1);                           
 
   
-    usernameInput.value = localStorage.getItem('username') || '';
-    emailInput.value = localStorage.getItem('email') || '';
   });
 
  
